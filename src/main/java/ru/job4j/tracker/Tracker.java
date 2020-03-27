@@ -60,8 +60,10 @@ public class Tracker {
 
     public void replace(String id, Item item) {
         int index = this.indexOf(id);
-        item.setId(id);
-        this.items[index] = item;
+        if (index != -1) {
+            item.setId(id);
+            this.items[index] = item;
+        }
     }
 
     private int indexOf(String id) {
@@ -75,12 +77,12 @@ public class Tracker {
         return rs;
     }
 
-    public void delete(String id){
+    public void delete(String id) {
         int index = indexOf(id);
         int start = index + 1;
         int size = position - index;
-        System.arraycopy(this.items,start,this.items,index,size);
+        System.arraycopy(this.items, start, this.items, index, size);
         this.items[position - 1] = null;
-        position --;
+        position--;
     }
 }
