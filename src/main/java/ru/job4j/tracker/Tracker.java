@@ -79,10 +79,12 @@ public class Tracker {
 
     public void delete(String id) {
         int index = indexOf(id);
+        if (index != -1) {
         int start = index + 1;
         int size = position - index;
         System.arraycopy(this.items, start, this.items, index, size);
         this.items[position - 1] = null;
         position--;
+        }
     }
 }
