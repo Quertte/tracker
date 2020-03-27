@@ -74,4 +74,13 @@ public class Tracker {
         }
         return rs;
     }
+
+    public void delete(String id){
+        int index = indexOf(id);
+        int start = index + 1;
+        int size = position - index;
+        System.arraycopy(this.items,start,this.items,index,size);
+        this.items[position - 1] = null;
+        position --;
+    }
 }
