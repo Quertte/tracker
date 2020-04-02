@@ -58,12 +58,15 @@ public class Tracker {
         return index != -1 ? items[index] : null;
     }
 
-    public void replace(String id, Item item) {
+    public boolean replace(String id, Item item) {
+        boolean result = false;
         int index = this.indexOf(id);
         if (index != -1) {
             item.setId(id);
             this.items[index] = item;
+            result = true;
         }
+        return result;
     }
 
     private int indexOf(String id) {
@@ -77,14 +80,17 @@ public class Tracker {
         return rs;
     }
 
-    public void delete(String id) {
+    public boolean delete(String id) {
+        boolean result = false;
         int index = indexOf(id);
         if (index != -1) {
-        int start = index + 1;
-        int size = position - index;
-        System.arraycopy(this.items, start, this.items, index, size);
-        this.items[position - 1] = null;
-        position--;
+            int start = index + 1;
+            int size = position - index;
+            System.arraycopy(this.items, start, this.items, index, size);
+            this.items[position - 1] = null;
+            position--;
+            result = true;
         }
+        return result;
     }
 }
