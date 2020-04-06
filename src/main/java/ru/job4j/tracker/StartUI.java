@@ -18,8 +18,9 @@ public class StartUI {
                 tracker.add(item);
             } else if (select == 1) {
                 System.out.println("==== Show all items ====");
-                if (tracker.findAll().length != 0) {
-                    for (Item it : tracker.findAll()) {
+                Item[] items = tracker.findAll();
+                if (items.length != 0) {
+                    for (Item it : items) {
                         System.out.println(it.getName() + " - " + it.getId());
                     }
                 } else {
@@ -49,15 +50,25 @@ public class StartUI {
                 System.out.println("==== Find item by id ====");
                 System.out.println("Введите id заявки");
                 String id = scanner.nextLine();
-                System.out.println(tracker.findById(id).getName());
-            }else if(select == 5){
+                Item item = tracker.findById(id);
+                if (item != null) {
+                    System.out.println(item.getName());
+                } else {
+                    System.out.println("Такой заяки нет");
+                }
+            } else if (select == 5) {
                 System.out.println("==== Find items by name ====");
                 System.out.println("Введите имя заявки");
                 String name = scanner.nextLine();
-                for(Item it: tracker.findByName(name)){
-                    System.out.println(it.getId() + " - " +  it.getName());
+                Item[] items = tracker.findByName(name);
+                if (items.length != 0) {
+                    for (Item it : items) {
+                        System.out.println(it.getId() + " - " + it.getName());
+                    }
+                }else {
+                    System.out.println("Таких заявок не существует");
                 }
-            } else if (select == 6){
+            } else if (select == 6) {
                 System.out.println("Выход из программы");
                 run = false;
             }
