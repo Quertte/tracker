@@ -86,7 +86,7 @@ public class StartUI {
             } else if (select == 4) {
                 StartUI.findByIdItem(input, tracker);
             } else if (select == 5) {
-                StartUI.findItemByName(input,tracker);
+                StartUI.findItemByName(input, tracker);
             } else if (select == 6) {
                 System.out.println("Выход из программы");
                 run = false;

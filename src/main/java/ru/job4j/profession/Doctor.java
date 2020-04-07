@@ -9,11 +9,11 @@ public class Doctor extends Profession {
     }
 
     @Override
-    public String getName(){
+    public String getName() {
         return super.getName();
     }
 
-    public Health diagnose(Pacient pacient){
+    public Health diagnose(Pacient pacient) {
         return null;
     }
 }

@@ -7,7 +7,7 @@ public class Service {
         this.store = store;
     }
 
-    public void extract(){
+    public void extract() {
         store.save("Andrew");
     }
 

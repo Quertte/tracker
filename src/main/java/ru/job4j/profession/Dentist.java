@@ -13,7 +13,7 @@ public class Dentist extends Doctor {
         return super.getName();
     }
 
-    public boolean treatTooth(Pacient pacient){
+    public boolean treatTooth(Pacient pacient) {
         return true;
     }
 }

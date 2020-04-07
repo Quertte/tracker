@@ -13,7 +13,7 @@ public class Library {
         books[2] = redHat;
         books[3] = cleanCode;
 
-        for(int i = 0; i < books.length; i++){
+        for (int i = 0; i < books.length; i++) {
             Book bk = books[i];
             System.out.println(bk.getName() + " - " + bk.getCountOfPages());
         }
@@ -24,16 +24,16 @@ public class Library {
         books[0] = books[3];
         books[3] = temp;
 
-        for(int i = 0; i < books.length; i++){
+        for (int i = 0; i < books.length; i++) {
             Book bk = books[i];
             System.out.println(bk.getName() + " - " + bk.getCountOfPages());
         }
 
         System.out.println("Выводим только книги с названием Clean Code");
 
-        for(int i = 0; i < books.length; i ++){
+        for (int i = 0; i < books.length; i++) {
             Book bk = books[i];
-            if(bk.getName().equals("Clean Code")){
+            if (bk.getName().equals("Clean Code")) {
                 System.out.println(bk.getName() + " - " + bk.getCountOfPages());
             }
         }

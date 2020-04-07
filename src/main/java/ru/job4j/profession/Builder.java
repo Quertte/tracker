@@ -17,7 +17,7 @@ public class Builder extends Engineer {
         return countOfBuildings;
     }
 
-    public boolean buildHouse(Project project){
+    public boolean buildHouse(Project project) {
         return true;
     }
 }

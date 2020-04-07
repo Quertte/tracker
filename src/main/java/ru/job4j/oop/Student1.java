@@ -13,11 +13,11 @@ public class Student1 {
         petya.song();
     }
 
-    public void music(String lyrics){
+    public void music(String lyrics) {
         System.out.println("I can sign a song : " + lyrics);
     }
 
-    public void song(){
+    public void song() {
         System.out.println("I believe I can fly");
     }
 }

@@ -10,15 +10,15 @@ public class Config {
         this.name = name;
     }
 
-    public void print(){
+    public void print() {
         System.out.println(position);
     }
 
-    public String getProperty(String key){
+    public String getProperty(String key) {
         return search(key);
     }
 
-    private String search(String key){
+    private String search(String key) {
         return key;
     }
 }

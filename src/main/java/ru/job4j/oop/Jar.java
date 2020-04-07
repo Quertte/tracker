@@ -8,7 +8,7 @@ public class Jar {
         this.value = size;
     }
 
-    public void pour(Jar another){
+    public void pour(Jar another) {
         this.value += another.value;
         another.value = 0;
     }

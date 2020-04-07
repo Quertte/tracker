@@ -17,7 +17,7 @@ public class Programmer extends Engineer {
         return lang;
     }
 
-    public void coding(){
+    public void coding() {
 
     }
 }

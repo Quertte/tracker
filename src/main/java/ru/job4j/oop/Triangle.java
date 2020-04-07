@@ -13,9 +13,9 @@ public class Triangle {
 
     /**
      * Метод вычисления периметра по длинам сторон.
-     *
+     * <p>
      * Формула.
-     *
+     * <p>
      * (a + b + c) / 2
      *
      * @param a расстояние между точками a b
@@ -30,11 +30,11 @@ public class Triangle {
 
     /**
      * Метод должен вычислить площадь треугольника.
-     *
+     * <p>
      * Формула.
-     *
+     * <p>
      * √ p *(p - ab) * (p - ac) * (p - bc)
-     *
+     * <p>
      * где √ - корень квадратный, для извлечения корня использовать метод Math.sqrt().
      *
      * @return Вернуть площадь, если треугольник существует или -1.
@@ -55,7 +55,7 @@ public class Triangle {
 
     /**
      * Метод проверяет можно ли построить треугольник с такими длинами сторон.
-     *
+     * <p>
      * Подумайте какое надо написать условие, чтобы определить можно ли построить треугольник.
      *
      * @param a Длина от точки a b.
@@ -65,14 +65,14 @@ public class Triangle {
      */
 
     private boolean exist(double a, double c, double b) {
-        return ((a + c > b) && (b + c > a) &&  ( a + b > c));
+        return ((a + c > b) && (b + c > a) && (a + b > c));
     }
 
     public static void main(String[] args) {
-        Point first = new Point(0,2);
-        Point second = new Point(0,3);
-        Point third = new Point(0,1);
-        Triangle triangle = new Triangle(first,second,third);
+        Point first = new Point(0, 2);
+        Point second = new Point(0, 3);
+        Point third = new Point(0, 1);
+        Triangle triangle = new Triangle(first, second, third);
         System.out.println(triangle.area());
     }
 }
