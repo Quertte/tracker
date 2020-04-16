@@ -4,7 +4,7 @@ package ru.job4j.tracker;
 
 public class StartUI {
 
-    public static void createItem(Input input, Tracker tracker) {
+    /*public static void createItem(Input input, Tracker tracker) {
         System.out.println("==== Create a new Item ====");
         String name = input.askStr("Введите имя:");
         tracker.add(new Item(name));
@@ -65,8 +65,7 @@ public class StartUI {
         } else {
             System.out.println("Таких заявок не существует");
         }
-    }
-
+    }*/
 
     public void init(Input input, Tracker tracker, UserAction[] actions) {
         boolean run = true;
@@ -89,7 +88,7 @@ public class StartUI {
     public static void main(String[] args) {
         Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
-        UserAction[] actions = {new CreateAction(), new AllAction(), new ReplaceActions(),
+        UserAction[] actions = {new CreateAction(), new AllItemsAction(), new ReplaceActions(),
                 new DeleteActions(), new FindIdActions(), new FindNameActions(), new ExitActions()};
         new StartUI().init(input, tracker, actions);
     }
