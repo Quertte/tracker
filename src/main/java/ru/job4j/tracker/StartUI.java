@@ -79,7 +79,7 @@ public class StartUI {
     }
 
     private void showMenu(UserAction[] actions) {
-        System.out.println("Menu. ");
+        System.out.println("Menu.");
         for (int i = 0; i < actions.length; i++) {
             System.out.println(i + ". " + actions[i].name());
         }
@@ -88,8 +88,8 @@ public class StartUI {
     public static void main(String[] args) {
         Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
-        UserAction[] actions = {new CreateAction(), new AllItemsAction(), new ReplaceActions(),
-                new DeleteActions(), new FindIdActions(), new FindNameActions(), new ExitActions()};
+        UserAction[] actions = {new CreateAction(), new FindAllAction(), new ReplaceActions(),
+                new DeleteActions(), new FindIdActions(), new FindByNameAction(), new ExitActions()};
         new StartUI().init(input, tracker, actions);
     }
 }
