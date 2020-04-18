@@ -59,14 +59,26 @@ public class Tracker {
     }
 
     public boolean replace(String id, Item item) {
-        boolean result = false;
-        int index = this.indexOf(id);
-        if (index != -1) {
+        int index = indexOf(id);
+        boolean rs1 = index != -1;
+        if (rs1) {
             item.setId(id);
             this.items[index] = item;
-            result = true;
         }
-        return result;
+        return rs1;
+    }
+
+    public boolean delete(String id) {
+        int index = indexOf(id);
+        boolean rs1 = index != -1;
+        if (rs1) {
+            int start = index + 1;
+            int size = position - index;
+            System.arraycopy(this.items, start, this.items, index, size);
+            this.items[position - 1] = null;
+            position--;
+        }
+        return rs1;
     }
 
     private int indexOf(String id) {
@@ -78,19 +90,5 @@ public class Tracker {
             }
         }
         return rs;
-    }
-
-    public boolean delete(String id) {
-        boolean result = false;
-        int index = indexOf(id);
-        if (index != -1) {
-            int start = index + 1;
-            int size = position - index;
-            System.arraycopy(this.items, start, this.items, index, size);
-            this.items[position - 1] = null;
-            position--;
-            result = true;
-        }
-        return result;
     }
 }
