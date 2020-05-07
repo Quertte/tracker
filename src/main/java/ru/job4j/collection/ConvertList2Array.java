@@ -3,6 +3,7 @@ package ru.job4j.collection;
 import java.util.List;
 
 public class ConvertList2Array {
+
     public static int[][] toArray(List<Integer> list, int cells) {
         int groups = (int) Math.ceil((double) list.size() / cells);
         System.out.println(groups);
@@ -13,10 +14,10 @@ public class ConvertList2Array {
             if (cell < cells) {
                 cell++;
             }
-            if (cell == 3) {
+            if (cell == cells) {
                 row++;
                 cell = 0;
-                if (row == 3) {
+                if (row == cells) {
                     break;
                 }
             }
