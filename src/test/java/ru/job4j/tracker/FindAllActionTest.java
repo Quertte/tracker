@@ -4,6 +4,8 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.StringJoiner;
 
 import static org.hamcrest.core.Is.is;
@@ -20,7 +22,7 @@ public class FindAllActionTest {
         Item item = new Item("fix bug");
         tracker.add(item);
         FindAllAction act = new FindAllAction();
-        act.execute(new StubInput(new String[]{}), tracker);
+        act.execute(new StubInput(new ArrayList<>(List.of())), tracker);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add(item.getId() + " " + item.getName())
                 .toString();

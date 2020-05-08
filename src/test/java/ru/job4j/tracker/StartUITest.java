@@ -4,6 +4,9 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.StringJoiner;
 
 import static org.hamcrest.core.Is.is;
@@ -14,11 +17,11 @@ public class StartUITest {
 
     @Test
     public void whenAddItem() {
-        String[] answers = {"Fix PC"};
+        List<String> answers = List.of("Fix PC");
         Input input = new StubInput(answers);
         Tracker tracker = new Tracker();
         new CreateAction().execute(input, tracker);
-        Item created = tracker.findAll()[0];
+        Item created = tracker.findAll().get(0);
         Item expected = new Item("Fix PC");
         assertThat(created.getName(), is(expected.getName()));
     }
@@ -28,7 +31,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = new Item("new Item");
         tracker.add(item);
-        String[] answers = {item.getId(), "replaced item"};
+        List<String> answers = List.of(item.getId(), "replaced item");
         new ReplaceActions().execute(new StubInput(answers), tracker);
         Item replaced = tracker.findById(item.getId());
         assertThat(replaced.getName(),is("replaced item"));
@@ -39,7 +42,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = new Item("new item");
         tracker.add(item);
-        String[] answers = {item.getId()};
+        List<String> answers = List.of(item.getId());
         new DeleteActions().execute(new StubInput(answers),tracker);
         Item deleted = tracker.findById(item.getId());
         assertThat(deleted,is(nullValue()));
@@ -47,9 +50,10 @@ public class StartUITest {
 
     @Test
     public void whenExit(){
-        StubInput input = new StubInput(new String[]{"0"});
+        StubInput input = new StubInput(new ArrayList<>(List.of("0")));
         StubAction action = new StubAction();
-        new StartUI().init(input, new Tracker(),new UserAction[]{action});
+        List<UserAction> list = List.of(action);
+        new StartUI().init(input, new Tracker(),list);
         assertThat(action.isCall(), is(true));
     }
 
@@ -59,13 +63,14 @@ public class StartUITest {
         PrintStream def = System.out;
         System.setOut(new PrintStream(out));
         StubInput input = new StubInput(
-                new String[] {"0"}
+                new ArrayList<>(List.of("0"))
         );
         StubAction action = new StubAction();
-        new StartUI().init(input, new Tracker(), new UserAction[] { action });
+        List<UserAction> list = List.of(action);
+        new StartUI().init(input, new Tracker(), list);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add("Menu.")
-                .add("0. Stub action")
+                .add("0)Stub action")
                 .toString();
         assertThat(new String(out.toByteArray()), is(expect));
         System.setOut(def);
