@@ -13,10 +13,10 @@ public class UniqueText {
         }
 
         for (String tex : text) {
-            if (check.contains(tex)) {
+            if (!check.contains(tex)) {
+                rs1 = false;
                 break;
             }
-            rs1 = false;
         }
         return rs1;
     }
