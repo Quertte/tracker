@@ -3,6 +3,7 @@ package ru.job4j.tracker;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.hamcrest.Matchers.is;
@@ -63,6 +64,26 @@ public class TrackerTest {
         String id = bug.getId();
         tracker.delete(id);
         assertThat(tracker.findById(id), is(nullValue()));
+    }
+
+    @Test
+    public void whenSortAscending(){
+        Item item = new Item("Andrew");
+        Item item1 = new Item("Marina");
+        Item item2 = new Item("Marco");
+        List<Item> list = Arrays.asList(item,item1,item2);
+        Collections.sort(list, new SortAscendingItem());
+        assertThat(list,is(List.of(item,item2,item1)));
+    }
+
+    @Test
+    public void whenSortDescending(){
+        Item item = new Item("Andrew");
+        Item item1 = new Item("Marina");
+        Item item2 = new Item("Marco");
+        List<Item> list = Arrays.asList(item,item1,item2);
+        Collections.sort(list, new SortDescendingItem());
+        assertThat(list,is(List.of(item1,item2,item)));
     }
 
 
