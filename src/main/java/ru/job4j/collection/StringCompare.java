@@ -14,7 +14,7 @@ public class StringCompare implements Comparator<String> {
                 return result;
             }
         }
-        return o1.length() == o2.length() ? 0 : Integer.compare(o1.length(), o2.length());
+        return Integer.compare(o1.length(), o2.length());
     }
 
     public static void main(String[] args) {
