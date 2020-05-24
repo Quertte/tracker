@@ -15,6 +15,14 @@ public class StringCompare implements Comparator<String> {
             }
         }
         return Integer.compare(o1.length(), o2.length());
+//        int rs1 = Integer.compare(o1.length(), o2.length());
+//        for (int i = 0; i < Math.min(o1.length(), o2.length()); i++) {
+//            if (o1.charAt(i) != o2.charAt(i)) {
+//                rs1 = Integer.compare(o1.charAt(i), o2.charAt(i));
+//                break;
+//            }
+//        }
+//        return rs1;
     }
 
     public static void main(String[] args) {
