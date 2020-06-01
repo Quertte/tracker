@@ -16,9 +16,7 @@ public class Departments {
                 tmp.add(start);
             }
         }
-        List<String> list = new ArrayList<>(tmp);
-        sortAsc(list);
-        return list;
+        return new ArrayList<>(tmp);
     }
 
     public static void sortAsc(List<String> orgs) {
