@@ -9,23 +9,24 @@ import java.util.function.Predicate;
 public class SearchAtt {
 
     public static List<Attachment> filterSize(List<Attachment> list) {
-        List<Attachment> rs1 = new ArrayList<>();
-        for (Attachment att : list) {
-            if (att.getSize() > 100) {
-                rs1.add(att);
+        Predicate predicate = new Predicate() {
+            @Override
+            public boolean test(Object o) {
+                Attachment att = (Attachment) o;
+                return att.getSize() > 100;
             }
-        }
-        return rs1;
+        };
+        return filter(list, predicate);
     }
 
     public static List<Attachment> filterName(List<Attachment> list) {
-        List<Attachment> rs1 = new ArrayList<>();
-        for (Attachment att : list) {
-            if (att.getName().contains("bug")) {
-                rs1.add(att);
+        Predicate<Attachment> predicate = new Predicate<Attachment>() {
+            @Override
+            public boolean test(Attachment attachment) {
+                return attachment.getName().contains("bug");
             }
-        }
-        return rs1;
+        };
+        return filter(list, predicate);
     }
 
     private static List<Attachment> filter(List<Attachment> list, Predicate<Attachment> pred) {
@@ -44,8 +45,10 @@ public class SearchAtt {
                 new Attachment("fck", 110),
                 new Attachment("Andrew", 90)
         );
-        System.out.println(filter(list, x -> x.getSize() > 100));
-        System.out.println(filter(list, x -> x.getName().contains("bug")));
+        System.out.println(filterName(list));
+        System.out.println(filterSize(list));
+//        System.out.println(filter(list, x -> x.getSize() > 100));
+//        System.out.println(filter(list, x -> x.getName().contains("bug")));
     }
 
 
