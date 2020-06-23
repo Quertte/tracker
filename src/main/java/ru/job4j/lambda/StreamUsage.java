@@ -1,5 +1,6 @@
 package ru.job4j.lambda;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,5 +39,16 @@ public class StreamUsage {
 
         long total = tasks.stream().map(task -> task.spent).reduce(0L, Long::sum);
         System.out.println(total);
+
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(-20);
+        list.add(-30);
+        list.add(6565);
+        list.add(5);
+        list.add(2020);
+
+        List<Integer> filter = list.stream().filter(
+                integer -> integer > 0).collect(Collectors.toList());
+        filter.forEach(System.out::println);
     }
 }
