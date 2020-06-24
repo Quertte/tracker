@@ -1,9 +1,11 @@
 package ru.job4j.stream;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Test {
     public static void main(String[] args) {
@@ -20,7 +22,19 @@ public class Test {
 
         Map<String, Student> map = students.stream().distinct().collect(
                 Collectors.toMap(Student::getSurname, student -> student));
-
         System.out.println(map);
+
+
+        System.out.println(convertListik(List.of(List.of(1, 2), List.of(3, 4))));
+        System.out.println(convert(new Integer[][]{{1, 2, 3}, {4, 5, 6}}));
+    }
+
+
+    public static List<Integer> convertListik(List<List<Integer>> matrix) {
+        return matrix.stream().flatMap(List::stream).collect(Collectors.toList());
+    }
+
+    public static List<Integer> convert(Integer[][] matrix) {
+        return Stream.of(matrix).flatMap(Arrays::stream).collect(Collectors.toList());
     }
 }
