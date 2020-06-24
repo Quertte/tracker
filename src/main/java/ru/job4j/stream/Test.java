@@ -1,9 +1,6 @@
 package ru.job4j.stream;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -17,11 +14,13 @@ public class Test {
                 new Student(85, "Andreev"),
                 new Student(100, "Vasilev"),
                 new Student(65, "Petrov"),
+                new Student(20, "Sidorov"),
                 new Student(20, "Sidorov")
         );
 
-        Map<String, Student> map = students.stream().distinct().collect(
-                Collectors.toMap(Student::getSurname, student -> student));
+        Map<String, Student> map = students.stream().collect(
+                Collectors.toMap(Student::getSurname, student -> student,
+                        (student1, student2) -> student1.getScore() > student2.getScore() ? student1 : student2));
         System.out.println(map);
 
 
