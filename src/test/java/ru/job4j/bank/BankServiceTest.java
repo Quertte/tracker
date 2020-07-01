@@ -2,6 +2,8 @@ package ru.job4j.bank;
 
 import org.junit.Test;
 
+import java.util.Optional;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
@@ -12,7 +14,8 @@ public class BankServiceTest {
         User user = new User("3434", "Petr Arsentev");
         BankService bank = new BankService();
         bank.addUser(user);
-        assertThat(bank.findByPassport("3434"), is(user));
+        Optional<User> opt = bank.findByPassport("3434");
+        assertThat(opt.get(), is(user));
     }
 
     @Test
@@ -21,7 +24,8 @@ public class BankServiceTest {
         BankService bank = new BankService();
         bank.addUser(user);
         bank.addAccount(user.getPassport(), new Account("5546", 150D));
-        assertNull(bank.findByRequisites("34", "5546"));
+        Optional<Account> account = bank.findByRequisites("34", "5546");
+        assertNull(Optional.ofNullable(account.get()));
     }
 
     @Test
@@ -30,7 +34,8 @@ public class BankServiceTest {
         BankService bank = new BankService();
         bank.addUser(user);
         bank.addAccount(user.getPassport(), new Account("5546", 150D));
-        assertThat(bank.findByRequisites("3434", "5546").getBalance(), is(150D));
+        Optional<Account> account = bank.findByRequisites("3434", "5546");
+        assertThat(account.get().getBalance(), is(150D));
     }
 
     @Test
@@ -41,6 +46,6 @@ public class BankServiceTest {
         bank.addAccount(user.getPassport(), new Account("5546", 150D));
         bank.addAccount(user.getPassport(), new Account("113", 50D));
         bank.transfersMoney(user.getPassport(), "5546", user.getPassport(), "113", 150D);
-        assertThat(bank.findByRequisites(user.getPassport(), "113").getBalance(), is(200D));
+        assertThat(bank.findByRequisites(user.getPassport(), "113").get().getBalance(), is(200D));
     }
 }
