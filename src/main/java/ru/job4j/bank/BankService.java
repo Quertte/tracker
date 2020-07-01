@@ -48,8 +48,9 @@ public class BankService {
 //        return account;
 
        // }
-        return  users.get(user.get()).stream().filter(
-                e -> e.getRequisite().equals(requisites)).findFirst();
+        return  user.flatMap(value -> users.get(value).stream()
+                .filter(e -> e.getRequisite().equals(requisites))
+                .findFirst());
     }
 
     public boolean transfersMoney(String srcPassport, String srcRequisites,

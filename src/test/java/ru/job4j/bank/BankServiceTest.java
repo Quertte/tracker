@@ -25,7 +25,7 @@ public class BankServiceTest {
         bank.addUser(user);
         bank.addAccount(user.getPassport(), new Account("5546", 150D));
         Optional<Account> account = bank.findByRequisites("34", "5546");
-        assertNull(Optional.ofNullable(account.get()));
+        assertNull(account.orElse(null));
     }
 
     @Test
